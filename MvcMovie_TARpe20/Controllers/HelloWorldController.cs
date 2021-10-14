@@ -13,23 +13,27 @@ namespace MvcMovie_TARpe20.Controllers
         // 
         // GET: /HelloWorld/
 
-        public string Index()
+        public IActionResult Index()
         {
-            return "This is my default action...";
+            return View();
         }
 
         // 
         // GET: /HelloWorld/Welcome/ 
 
-        public string Welcome(string name, int numTimes=1)
+        public IActionResult Welcome(string name, int numTimes=10)
         {
-            return HtmlEncoder.Default.Encode($"Hello {name}, Numtimes is {numTimes} ");
+
+            ViewData["Message"] = "Hello" + name;
+            ViewData["NumTimes"] = numTimes;
+
+            return View();
         }
 
         public string Hommik()
         {
 
-            return "hommik";
+            return HtmlEncoder.Default.Encode("hommik");
 
         }
 

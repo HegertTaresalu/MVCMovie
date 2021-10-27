@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
@@ -8,11 +8,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using MvcMovie_TARpe20.Data;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.Localization;
 
 namespace MvcMovie_TARpe20
 {
     public class Startup
     {
+      
+
+
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -24,6 +33,9 @@ namespace MvcMovie_TARpe20
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<MvcMovie_TARpe20Context>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("MvcMovie_TARpe20Context")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

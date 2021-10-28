@@ -16,6 +16,6 @@ namespace MvcMovie_TARpe20.Data
 
         public DbSet<MvcMovie_TARpe20.Models.Movie> Movie { get; set; }
 
-        public DbSet<MvcMovie_TARpe20.Models.Actors> Actors { get; set; }
+        public DbSet<MvcMovie_TARpe20.Models.Actor> Actor { get; set; }
     }
 }

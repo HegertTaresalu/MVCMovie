@@ -22,7 +22,7 @@ namespace MvcMovie_TARpe20.Controllers
         // GET: Actors
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Actors.ToListAsync());
+            return View(await _context.Actor.ToListAsync());
         }
 
         // GET: Actors/Details/5
@@ -33,7 +33,7 @@ namespace MvcMovie_TARpe20.Controllers
                 return NotFound();
             }
 
-            var actors = await _context.Actors
+            var actors = await _context.Actor
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (actors == null)
             {
@@ -54,7 +54,7 @@ namespace MvcMovie_TARpe20.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,BirthDate,Salary")] Actors actors)
+        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,BirthDate,Salary")] Actor actors)
         {
             if (ModelState.IsValid)
             {
@@ -73,7 +73,7 @@ namespace MvcMovie_TARpe20.Controllers
                 return NotFound();
             }
 
-            var actors = await _context.Actors.FindAsync(id);
+            var actors = await _context.Actor.FindAsync(id);
             if (actors == null)
             {
                 return NotFound();
@@ -86,9 +86,9 @@ namespace MvcMovie_TARpe20.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,BirthDate,Salary")] Actors actors)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,BirthDate,Salary")] Actor actor)
         {
-            if (id != actors.Id)
+            if (id != actor.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace MvcMovie_TARpe20.Controllers
             {
                 try
                 {
-                    _context.Update(actors);
+                    _context.Update(actor);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ActorsExists(actors.Id))
+                    if (!ActorsExists(actor.Id))
                     {
                         return NotFound();
                     }
@@ -113,7 +113,7 @@ namespace MvcMovie_TARpe20.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(actors);
+            return View(actor);
         }
 
         // GET: Actors/Delete/5
@@ -124,7 +124,7 @@ namespace MvcMovie_TARpe20.Controllers
                 return NotFound();
             }
 
-            var actors = await _context.Actors
+            var actors = await _context.Actor
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (actors == null)
             {
@@ -139,15 +139,15 @@ namespace MvcMovie_TARpe20.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var actors = await _context.Actors.FindAsync(id);
-            _context.Actors.Remove(actors);
+            var actors = await _context.Actor.FindAsync(id);
+            _context.Actor.Remove(actors);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ActorsExists(int id)
         {
-            return _context.Actors.Any(e => e.Id == id);
+            return _context.Actor.Any(e => e.Id == id);
         }
     }
 }

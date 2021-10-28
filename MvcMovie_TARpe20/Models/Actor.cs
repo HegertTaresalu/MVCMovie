@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MvcMovie_TARpe20.Models
 {
-    public class Actors
+    public class Actor
     {
         public int Id { get; set; }
 
@@ -20,13 +20,15 @@ namespace MvcMovie_TARpe20.Models
 
 
         [DataType(DataType.Date)]
-        public DateTime BirthDate { get; set; }
+        public DateTime DateOfBirth { get; set; }
 
 
-        [Required]
-        [DataType(DataType.Currency)]
-        public int Salary { get; set; }
+        public int NumberOfOscars { get; set; }
+        
+        public string BirthPlace { get; set; }
 
+
+        public int NetWorth { get; set; }
 
 
 

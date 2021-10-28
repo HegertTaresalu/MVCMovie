@@ -1,4 +1,4 @@
-﻿@model MvcMovie_TARpe20.Models.Actors
+﻿@model MvcMovie_TARpe20.Models.Actor
 
 @{
     ViewData["Title"] = "Edit";
@@ -6,7 +6,7 @@
 
 <h1>Edit</h1>
 
-<h4>Actors</h4>
+<h4>Actor</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -24,14 +24,24 @@
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="BirthDate" class="control-label"></label>
-                <input asp-for="BirthDate" class="form-control" />
-                <span asp-validation-for="BirthDate" class="text-danger"></span>
+                <label asp-for="DateOfBirth" class="control-label"></label>
+                <input asp-for="DateOfBirth" class="form-control" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Salary" class="control-label"></label>
-                <input asp-for="Salary" class="form-control" />
-                <span asp-validation-for="Salary" class="text-danger"></span>
+                <label asp-for="NumberOfOscars" class="control-label"></label>
+                <input asp-for="NumberOfOscars" class="form-control" />
+                <span asp-validation-for="NumberOfOscars" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BirthPlace" class="control-label"></label>
+                <input asp-for="BirthPlace" class="form-control" />
+                <span asp-validation-for="BirthPlace" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NetWorth" class="control-label"></label>
+                <input asp-for="NetWorth" class="form-control" />
+                <span asp-validation-for="NetWorth" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

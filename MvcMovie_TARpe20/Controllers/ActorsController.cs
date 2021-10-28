@@ -18,11 +18,38 @@ namespace MvcMovie_TARpe20.Controllers
         {
             _context = context;
         }
+        
+
+
 
         // GET: Actors
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? birthyear, string searchString)
         {
-            return View(await _context.Actor.ToListAsync());
+            var birthyearquery = from a in _context.Actor
+                                 orderby a.DateOfBirth.Year
+                                 select a.DateOfBirth.Year;
+            var actors = from a in _context.Actor
+                         select a;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                actors = actors.Where(s => s.FirstName.Contains(searchString) || s.LastName.Contains(searchString));
+            }
+
+
+            if (birthyear != null)
+            {
+                actors = actors.Where(s => s.DateOfBirth.Year == birthyear);
+            }
+
+            var actorVM = new ActorsViewModel
+            {
+                Actors = await actors.ToListAsync(),
+                BirthYears = new SelectList(await birthyearquery.Distinct().ToListAsync())
+            };
+
+            return View(actorVM);
+
         }
 
         // GET: Actors/Details/5

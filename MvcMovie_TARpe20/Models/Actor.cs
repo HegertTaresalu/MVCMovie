@@ -12,22 +12,30 @@ namespace MvcMovie_TARpe20.Models
 
         [Required]
         [StringLength(25,MinimumLength = 2)]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$",ErrorMessage = "ainult tähtesi võib kasutada")]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         [Required]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$", ErrorMessage = "ainult tähtesi võib kasutada")]
         [StringLength(50, MinimumLength = 2)]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-
+        [Display(Name = "Date Of Birth")]
         [DataType(DataType.Date)]
+
         public DateTime DateOfBirth { get; set; }
 
 
+        [Display(Name = "Number Of Oscars")]
         public int NumberOfOscars { get; set; }
-        
+
+        [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$", ErrorMessage = "ainult tähtesi võib kasutada")]
+        [Display(Name = "Birth place")]
         public string BirthPlace { get; set; }
 
-
+        [Display(Name = "Net Worth")]
         public int NetWorth { get; set; }
 
 
